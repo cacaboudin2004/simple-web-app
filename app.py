@@ -9,6 +9,7 @@ def home():
     <h1>Bienvenue sur mon app Flask 🚀</h1>
     <p><a href='/api/products'>Voir les produits en JSON</a></p>
     <p><a href='/form'>Tester le formulaire</a></p>
+    <p><a href='/about'>À propos</a></p>
     """
 
 # API JSON avec données simulées
@@ -39,18 +40,25 @@ def form():
         <input type="text" name="name"><br>
         <label>Email :</label>
         <input type="email" name="email"><br>
-        <input type="submit" value="Envoyer">
+        <button type="submit">Envoyer</button>
     </form>
     """
 
-# Gestion des erreurs
-@app.errorhandler(404)
-def not_found(e):
+# Nouvelle page "À propos"
+@app.route("/about")
+def about():
     return """
-    <h1>404 - Page non trouvée 😢</h1>
+    <h1>À propos</h1>
+    <p>Cette petite app Flask est une démo avec :</p>
+    <ul>
+        <li>Une page d'accueil</li>
+        <li>Une API JSON simulée</li>
+        <li>Un formulaire GET/POST</li>
+    </ul>
+    <p>Code prêt à être poussé sur GitHub 🚀</p>
     <p><a href='/'>Retour à l'accueil</a></p>
-    """, 404
+    """
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)
 
